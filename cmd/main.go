@@ -1,7 +1,20 @@
+//!
+
 package main
 
-import "fmt"
+import (
+	"library-api/api"
+	"library-api/service"
+	hotreload "library-api/util/hot_reload"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	hotreload.Go("../", func() {
+		service.MustResetTables()
+		g := gin.Default()
+		api.InitGroup(g)
+		g.Run()
+	})
 }
