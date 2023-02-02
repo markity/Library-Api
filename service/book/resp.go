@@ -83,6 +83,14 @@ func RespNoSuchBookToPraise(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, resp)
 }
 
+func RespNoSuchBookToFocus(ctx *gin.Context) {
+	resp := errorcodes.BasicErrorResp{}
+	resp.Status = errorcodes.ErrorNoSuchBookToFocusCode
+	resp.Info = errorcodes.ErrorNoSuchBookToFocusMsg
+
+	ctx.JSON(http.StatusOK, resp)
+}
+
 type labelSearchOKRespData struct {
 	Books []BookWithPariseAndFocus `json:"books"`
 }

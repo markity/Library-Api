@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS user(
 var SentenceCreateBook = `
 CREATE TABLE IF NOT EXISTS book(
 	id 				INT PRIMARY KEY AUTO_INCREMENT,
-	name			VARCHAR(32) NOT NULL,
+	name			TEXT NOT NULL,
 	author			VARCHAR(32) NOT NULL,
 	comment_num		INT NOT NULL,
 	score			DOUBLE NOT NULL,

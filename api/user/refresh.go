@@ -16,13 +16,11 @@ func RefreshToken(ctx *gin.Context) {
 	refresh, ok2 := refresh_.(string)
 
 	if !ok1 || !ok2 {
-		println(123)
 		service.RespInvalidParaError(ctx)
 		return
 	}
 	ok, p := middleware.JwtSignaturer.CheckAndUnpackPayload(refresh)
-	if !ok {
-		println(456)
+	if !ok || p.TokenType != "refresh" {
 		service.RespInvalidParaError(ctx)
 		return
 	}

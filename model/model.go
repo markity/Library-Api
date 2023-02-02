@@ -4,6 +4,13 @@ import (
 	"time"
 )
 
+type FocusListItem struct {
+	BookID      int64     `json:"book_id"`
+	Name        string    `json:"name"`
+	PublishTime time.Time `json:"publish_time"`
+	ContentLink string    `json:"content_link"`
+}
+
 type User struct {
 	ID int64
 	// 0男 1女

@@ -11,7 +11,7 @@ func TryEditUserInfo(userID int64, doAvatar bool, avartar *string, doBirthday bo
 	if doAvatar {
 		i++
 		args = append(args, avartar)
-		s += "avartar=?,"
+		s += "avatar_link=?,"
 	}
 	if doBirthday {
 		i++

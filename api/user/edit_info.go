@@ -15,7 +15,7 @@ func ChangeUserInfo(ctx *gin.Context) {
 	userID_, _ := ctx.Get("user_id")
 	userID := userID_.(int64)
 
-	avartar_, doAvatar := json["username"]
+	avartar_, doAvatar := json["avatar_link"]
 	var avartar *string
 	if doAvatar {
 		if avartar_ == nil {

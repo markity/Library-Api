@@ -27,4 +27,5 @@ func InitGroup(engine *gin.Engine) {
 	engine.GET("/comment/book/:book_id", middleware.MiddleWareJWTMention, comment.ListCommentsUnderBook)
 	engine.PUT("/operate/praise", middleware.MiddleWareJWTVerify, middleware.MiddleWarePassJSON, operate.Praise)
 	engine.GET("/operate/collect/list", middleware.MiddleWareJWTVerify, middleware.MiddleWarePassJSON, operate.ListFocus)
+	engine.Static("/resource", "../resource")
 }

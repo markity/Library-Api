@@ -7,3 +7,5 @@ var ErrorBookNameNotFoundMsg = "book not found by name"
 // 重复关注
 var ErrorAlreadyFocusedCode = 10500
 var ErrorAlreadyFocusedMsg = "you already focused the book"
+var ErrorNoSuchBookToFocusCode = 10501
+var ErrorNoSuchBookToFocusMsg = "no such a book to be focused"

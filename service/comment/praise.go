@@ -40,7 +40,7 @@ func TryPraise(userID int64, commentID int64) (exists bool, ok bool, err error) 
 				tx.Rollback()
 				return false, false, err
 			}
-			_, err = tx.Exec("UPDATE book SET praise_cnt=? WHERE id=?", praise+1, commentID)
+			_, err = tx.Exec("UPDATE comment SET praise_cnt=? WHERE id=?", praise+1, commentID)
 			if err != nil {
 				tx.Rollback()
 				return false, false, err

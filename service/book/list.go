@@ -30,7 +30,7 @@ func TryGetBooksWithPraiseAndFocus(userID int64) ([]BookWithPariseAndFocus, erro
 		row := tx.QueryRow(`SELECT id, name, author, comment_num, score, publish_time,
 	 	cover_link, content_link, label_string,praise_cnt FROM book WHERE id > ?`, idNow)
 		if err := row.Scan(&m.Book.ID, &m.Book.Name, &m.Book.Author, &m.Book.CommentNum,
-			&m.Book.Score, &publishTime_, &m.Book.ContentLink,
+			&m.Book.Score, &publishTime_, &m.Book.CoverLink,
 			&m.Book.ContentLink, &m.Book.Label, &m.Book.PraiseCnt); err != nil {
 			if err == sql.ErrNoRows {
 				tx.Commit()

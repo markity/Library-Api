@@ -22,27 +22,32 @@ func Focus(ctx *gin.Context) {
 		return
 	}
 
-	isAlreadyFocused := false
+	var exists bool
+	var inserted bool
 
 	ok := retry.RetryFrame(func() error {
-		inserted, err := serbook.TryFocus(userID, bookID)
+		exists_, inserted_, err := serbook.TryFocus(userID, bookID)
 		if err != nil {
 			return err
 		}
 
-		isAlreadyFocused = !inserted
+		exists = exists_
+		inserted = inserted_
 
 		return nil
 	}, 3, "api/book/focus.go Focus.TryFocus")
-
-	println(isAlreadyFocused)
 
 	if !ok {
 		service.RespServiceNotAvailabelError(ctx)
 		return
 	}
 
-	if isAlreadyFocused {
+	if !exists {
+		serbook.RespNoSuchBookToFocus(ctx)
+		return
+	}
+
+	if !inserted {
 		serbook.RespAlreadyFoucused(ctx)
 		return
 	}
