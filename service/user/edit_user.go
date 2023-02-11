@@ -36,7 +36,7 @@ func TryEditUserInfo(userID int64, doAvatar bool, avartar *string, doBirthday bo
 	if doPhone {
 		i++
 		args = append(args, phone)
-		s += "phone = ?,"
+		s += "telephone = ?,"
 	}
 
 	if i != 0 {

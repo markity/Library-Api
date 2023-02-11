@@ -20,7 +20,7 @@ func TryPraise(userID int64, commentID int64) (exists bool, ok bool, err error) 
 		return false, false, err
 	}
 
-	row = tx.QueryRow("SELECT praise_cnt FROM book WHERE id=? FOR UPDATE", commentID)
+	row = tx.QueryRow("SELECT praise_cnt FROM comment WHERE id=? FOR UPDATE", commentID)
 	praise := int64(0)
 	err = row.Scan(&praise)
 	if err != nil {
